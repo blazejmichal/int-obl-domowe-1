@@ -1,5 +1,5 @@
 import random
-from zadania.item import Item
+from Item import Item
 import numpy as numpy
 import matplotlib.pyplot as plt
 
@@ -128,10 +128,10 @@ def main():
     generation = 1
     population = createStartingPopulation(POPULATION_SIZE)
     for i in range(0, GENERATION_AMOUNT):
-        print "Generation " + str(generation) + " with " + str(len(population))
+        print("Generation " + str(generation) + " with " + str(len(population)))
         # population = sorted(population, key=lambda x: calcualteFitness(x), reverse=True)
         for j in population:
-            print str(j) + ", fit: " + str(calcualteFitness(j))
+            print(str(j) + ", fit: " + str(calcualteFitness(j)))
         fitnessValues = getFitnessValues(population)
         updateX(xGenerations, generation)
         updateYMax(yMax, fitnessValues)
