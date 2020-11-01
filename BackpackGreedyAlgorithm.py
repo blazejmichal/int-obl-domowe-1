@@ -3,17 +3,16 @@ import matplotlib.pyplot as plt
 
 
 class BackpackGreedyAlgorithm:
-
     ITEMS = []
     CAPACITY = 0
+    startTime = 0
+    endTime = 0
 
     @classmethod
     def run(cls, ITEMS, CAPACITY):
         cls.setInput(ITEMS, CAPACITY)
-        start = timeit.default_timer()
         bestSet = cls.getBestSet(ITEMS, CAPACITY)
-        stop = timeit.default_timer()
-        time = stop - start
+        time = cls.endTime - cls.startTime
         cls.printInfo(time, bestSet)
         return time
 
@@ -41,11 +40,12 @@ class BackpackGreedyAlgorithm:
 
     @classmethod
     def getBestSet(cls, items, capacity):
+        xIteration = []
+        yValue = []
+        cls.startTime = timeit.default_timer()
         bestSet = []
         items.sort(reverse=True)
         totalValue = 0
-        xIteration = []
-        yValue = []
         iteration = 0
         for item in items:
             currentWeight = int(item.weight)
@@ -63,8 +63,9 @@ class BackpackGreedyAlgorithm:
                 capacity = int(capacity - (currentWeight * fraction))
                 yValue.append(totalValue)
                 break
+        cls.endTime = timeit.default_timer()
+        cls.plotChart(xIteration, yValue)
         return bestSet
-
 
     @classmethod
     def plotChart(cls, x, y):
@@ -74,7 +75,6 @@ class BackpackGreedyAlgorithm:
         plt.ylabel('Wartosci')
         plt.legend()
         plt.show()
-
 
     @classmethod
     def printInfo(cls, time, bestSet):

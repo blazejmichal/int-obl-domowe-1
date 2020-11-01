@@ -20,12 +20,12 @@ def main():
     print("Small case")
     BackpackBruteForce.run(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
     BackpackGreedyAlgorithm.run(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
-    BackpackGeneticAlgorithm.run(ITEMS_SMALL, CAPACITY_SMALL)
+    BackpackGeneticAlgorithm.run(ITEMS_SMALL, CAPACITY_SMALL, MAX_VALUE_SMALL_CASE)
     print("\n----------------------------------------------------------------\n")
     print("Large case")
     BackpackBruteForce.run(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
     BackpackGreedyAlgorithm.run(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
-    BackpackGeneticAlgorithm.run(ITEMS_LARGE, CAPACITY_LARGE)
+    BackpackGeneticAlgorithm.run(ITEMS_LARGE, CAPACITY_LARGE, MAX_VALUE_LARGE_CASE)
 
 
 if __name__ == "__main__":

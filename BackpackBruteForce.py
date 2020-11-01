@@ -6,14 +6,14 @@ import timeit
 class BackpackBruteForce:
     ITEMS = []
     CAPACITY = 0
+    startTime = 0
+    endTime = 0
 
     @classmethod
     def run(cls, ITEMS, CAPACITY):
         cls.setInput(ITEMS, CAPACITY)
-        start = timeit.default_timer()
         bestSet = cls.getBestSet(ITEMS, CAPACITY)
-        stop = timeit.default_timer()
-        time = stop - start
+        time = cls.endTime - cls.startTime
         cls.printInfo(time, bestSet)
         return time
 
@@ -26,6 +26,7 @@ class BackpackBruteForce:
     def getBestSet(cls, ITEMS, CAPACITY):
         xIteration = []
         yValue = []
+        cls.startTime = timeit.default_timer()
         iteration = 0
         matchingSets = []
         for i in range(0, len(ITEMS) + 1):
@@ -38,6 +39,7 @@ class BackpackBruteForce:
                     xIteration.append(iteration)
                     yValue.append(subSetValue)
                     matchingSets.append(subSet)
+        cls.endTime = timeit.default_timer()
         cls.plotChart(xIteration, yValue)
         return max(matchingSets, key=lambda matchingSet: cls.getSetValue(matchingSet))
 

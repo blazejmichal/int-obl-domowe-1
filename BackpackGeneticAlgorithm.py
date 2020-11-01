@@ -12,7 +12,7 @@ class BackpackGeneticAlgorithm:
     GENERATION_AMOUNT = 100
 
     @classmethod
-    def run(cls, ITEMS, CAPACITY):
+    def run(cls, ITEMS, CAPACITY, MAX_VALUE):
         yMax = []
         yAverage = []
         xGenerations = []
@@ -27,10 +27,12 @@ class BackpackGeneticAlgorithm:
             cls.updateYAverage(yAverage, fitnessValues)
             population = cls.evolvePopulation(population)
             generation += 1
-        cls.plotChart(yMax, yAverage, xGenerations)
+            if MAX_VALUE in fitnessValues:
+                break
         stop = timeit.default_timer()
         time = stop - start
-        print("Czas dla GeneticAlgorithm: " + str(time))
+        cls.plotChart(yMax, yAverage, xGenerations)
+        cls.printInfo(time)
         return time
 
     @classmethod
@@ -148,3 +150,10 @@ class BackpackGeneticAlgorithm:
     def updateYAverage(cls, yAverage, fitnessValues):
         averageFitness = numpy.average(fitnessValues)
         yAverage.append(averageFitness)
+
+    @classmethod
+    def printInfo(cls, time):
+        print("\n")
+        print("Algorytm Genetic")
+        print("Czas: " + str(time))
+        print("\n")
