@@ -22,23 +22,6 @@ class BackpackGreedyAlgorithm:
         cls.CAPACITY = CAPACITY
 
     @classmethod
-    def getMaxValue(cls, items, capacity):
-        items.sort(reverse=True)
-        totalValue = 0
-        for item in items:
-            currentWeight = int(item.weight)
-            currentValue = int(item.value)
-            if capacity - currentWeight >= 0:
-                capacity -= currentWeight
-                totalValue += currentValue
-            else:
-                fraction = capacity / currentWeight
-                totalValue += currentValue * fraction
-                capacity = int(capacity - (currentWeight * fraction))
-                break
-        return totalValue
-
-    @classmethod
     def getBestSet(cls, items, capacity):
         xIteration = []
         yValue = []
@@ -83,3 +66,20 @@ class BackpackGreedyAlgorithm:
         print("Czas: " + str(time))
         print("Znaleziony zestaw: " + str(bestSet))
         print("\n")
+
+    @classmethod
+    def getMaxValue(cls, items, capacity):
+        items.sort(reverse=True)
+        totalValue = 0
+        for item in items:
+            currentWeight = int(item.weight)
+            currentValue = int(item.value)
+            if capacity - currentWeight >= 0:
+                capacity -= currentWeight
+                totalValue += currentValue
+            else:
+                fraction = capacity / currentWeight
+                totalValue += currentValue * fraction
+                capacity = int(capacity - (currentWeight * fraction))
+                break
+        return totalValue
