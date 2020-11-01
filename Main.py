@@ -9,11 +9,23 @@ def cloneItems(ITEMS):
 
 
 def main():
-    ITEMS = ItemsInitilizer.initilizeItems()
-    CAPACITY = 25
-    BackpackBruteForce.run(cloneItems(ITEMS), CAPACITY)
-    BackpackGreedyAlgorithm.run(cloneItems(ITEMS), CAPACITY)
-    BackpackGeneticAlgorithm.run(ITEMS, CAPACITY)
+    CAPACITY_SMALL = 25
+    CAPACITY_LARGE = 50
+    ITEMS_LARGE_COLLECTION_SIZE = 20
+    ITEMS_SMALL = ItemsInitilizer.initilizeItems()
+    ITEMS_LARGE = ItemsInitilizer.initilizeItemsLarge(ITEMS_LARGE_COLLECTION_SIZE)
+    maxValueSmallCase = BackpackGreedyAlgorithm.getMaxValue(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
+    maxValueLargeCase = BackpackGreedyAlgorithm.getMaxValue(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
+
+    print("Small case")
+    BackpackBruteForce.run(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
+    BackpackGreedyAlgorithm.run(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
+    BackpackGeneticAlgorithm.run(ITEMS_SMALL, CAPACITY_SMALL)
+    print("\n----------------------------------------------------------------\n")
+    print("Large case")
+    BackpackBruteForce.run(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
+    BackpackGreedyAlgorithm.run(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
+    BackpackGeneticAlgorithm.run(ITEMS_LARGE, CAPACITY_LARGE)
 
 
 if __name__ == "__main__":

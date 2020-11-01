@@ -1,9 +1,10 @@
 class Item(object):
 
-    def __init__(self, value=0, weight=0, name=None):
+    # def __init__(self, value=0, weight=0, name=None):
+    def __init__(self, value=0, weight=0):
         self.value = value
         self.weight = weight
-        self.name = name
+        # self.name = name
 
     def __lt__(self, other):
         selfCost = self.value // self.weight

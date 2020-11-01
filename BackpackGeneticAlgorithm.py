@@ -1,11 +1,7 @@
 import random
 import timeit
-
-from Item import Item
 import numpy as numpy
 import matplotlib.pyplot as plt
-
-from ItemsInitilizer import ItemsInitilizer
 
 
 class BackpackGeneticAlgorithm:
@@ -14,10 +10,6 @@ class BackpackGeneticAlgorithm:
     CAPACITY = 0
     POPULATION_SIZE = 200
     GENERATION_AMOUNT = 100
-
-    # @classmethod
-    # def getItems(cls):
-    #     cls.ITEMS = ItemsInitilizer.initilizeItems()
 
     @classmethod
     def calcualteFitness(cls, chromosome):
