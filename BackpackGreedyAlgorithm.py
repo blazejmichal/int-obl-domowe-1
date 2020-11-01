@@ -5,12 +5,11 @@ import matplotlib.pyplot as plt
 class BackpackGreedyAlgorithm:
 
     ITEMS = []
-    MAX_VALUE = 0
     CAPACITY = 0
 
     @classmethod
-    def run(cls, ITEMS, CAPACITY, MAX_VALUE):
-        cls.setInput(ITEMS, CAPACITY, MAX_VALUE)
+    def run(cls, ITEMS, CAPACITY):
+        cls.setInput(ITEMS, CAPACITY)
         start = timeit.default_timer()
         bestSet = cls.getBestSet(ITEMS, CAPACITY)
         stop = timeit.default_timer()
@@ -19,10 +18,9 @@ class BackpackGreedyAlgorithm:
         return time
 
     @classmethod
-    def setInput(cls, ITEMS, CAPACITY, MAX_VALUE):
+    def setInput(cls, ITEMS, CAPACITY):
         cls.ITEMS = ITEMS
         cls.CAPACITY = CAPACITY
-        cls.MAX_VALUE = MAX_VALUE
 
     @classmethod
     def getMaxValue(cls, items, capacity):
