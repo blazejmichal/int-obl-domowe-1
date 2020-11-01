@@ -39,9 +39,10 @@ class BackpackBruteForce:
                     xIteration.append(iteration)
                     yValue.append(subSetValue)
                     matchingSets.append(subSet)
+        maxValue = max(matchingSets, key=lambda matchingSet: cls.getSetValue(matchingSet))
         cls.endTime = timeit.default_timer()
         cls.plotChart(xIteration, yValue)
-        return max(matchingSets, key=lambda matchingSet: cls.getSetValue(matchingSet))
+        return maxValue
 
     @classmethod
     def plotChart(cls, x, y):
