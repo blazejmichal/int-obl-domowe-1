@@ -12,11 +12,10 @@ class BackpackGreedyAlgorithm:
     def run(cls, ITEMS, CAPACITY, MAX_VALUE):
         cls.setInput(ITEMS, CAPACITY, MAX_VALUE)
         start = timeit.default_timer()
-        maxValue = cls.getMaxValue(ITEMS, CAPACITY)
+        bestSet = cls.getBestSet(ITEMS, CAPACITY)
         stop = timeit.default_timer()
         time = stop - start
-        print("Max wartosc dla Greedy: " + str(maxValue))
-        print("Czas dla GreedyAlgorithm: " + str(time))
+        cls.printInfo(time, bestSet)
         return time
 
     @classmethod
@@ -27,6 +26,24 @@ class BackpackGreedyAlgorithm:
 
     @classmethod
     def getMaxValue(cls, items, capacity):
+        items.sort(reverse=True)
+        totalValue = 0
+        for item in items:
+            currentWeight = int(item.weight)
+            currentValue = int(item.value)
+            if capacity - currentWeight >= 0:
+                capacity -= currentWeight
+                totalValue += currentValue
+            else:
+                fraction = capacity / currentWeight
+                totalValue += currentValue * fraction
+                capacity = int(capacity - (currentWeight * fraction))
+                break
+        return totalValue
+
+    @classmethod
+    def getBestSet(cls, items, capacity):
+        bestSet = []
         items.sort(reverse=True)
         totalValue = 0
         xIteration = []
@@ -41,14 +58,15 @@ class BackpackGreedyAlgorithm:
                 capacity -= currentWeight
                 totalValue += currentValue
                 yValue.append(totalValue)
+                bestSet.append(item)
             else:
                 fraction = capacity / currentWeight
                 totalValue += currentValue * fraction
                 capacity = int(capacity - (currentWeight * fraction))
                 yValue.append(totalValue)
                 break
-        cls.plotChart(xIteration, yValue)
-        return totalValue
+        return bestSet
+
 
     @classmethod
     def plotChart(cls, x, y):
@@ -58,3 +76,12 @@ class BackpackGreedyAlgorithm:
         plt.ylabel('Wartosci')
         plt.legend()
         plt.show()
+
+
+    @classmethod
+    def printInfo(cls, time, bestSet):
+        print("\n")
+        print("Algorytm Greedy")
+        print("Czas: " + str(time))
+        print("Znaleziony zestaw: " + str(bestSet))
+        print("\n")
