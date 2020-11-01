@@ -4,3 +4,8 @@ class Item(object):
         self.value = value
         self.weight = weight
         self.name = name
+
+    def __lt__(self, other):
+        selfCost = self.value // self.weight
+        otherCost = other.value // other.weight
+        return selfCost < otherCost
