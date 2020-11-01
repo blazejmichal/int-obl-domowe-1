@@ -14,16 +14,16 @@ def main():
     ITEMS_LARGE_COLLECTION_SIZE = 20
     ITEMS_SMALL = ItemsInitilizer.initilizeItems()
     ITEMS_LARGE = ItemsInitilizer.initilizeItemsLarge(ITEMS_LARGE_COLLECTION_SIZE)
-    maxValueSmallCase = BackpackGreedyAlgorithm.getMaxValue(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
-    maxValueLargeCase = BackpackGreedyAlgorithm.getMaxValue(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
+    MAX_VALUE_SMALL_CASE = BackpackGreedyAlgorithm.getMaxValue(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
+    MAX_VALUE_LARGE_CASE = BackpackGreedyAlgorithm.getMaxValue(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
 
     print("Small case")
-    BackpackBruteForce.run(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
+    BackpackBruteForce.run(cloneItems(ITEMS_SMALL), CAPACITY_SMALL, MAX_VALUE_SMALL_CASE)
     BackpackGreedyAlgorithm.run(cloneItems(ITEMS_SMALL), CAPACITY_SMALL)
     BackpackGeneticAlgorithm.run(ITEMS_SMALL, CAPACITY_SMALL)
     print("\n----------------------------------------------------------------\n")
     print("Large case")
-    BackpackBruteForce.run(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
+    BackpackBruteForce.run(cloneItems(ITEMS_LARGE), CAPACITY_LARGE, MAX_VALUE_LARGE_CASE)
     BackpackGreedyAlgorithm.run(cloneItems(ITEMS_LARGE), CAPACITY_LARGE)
     BackpackGeneticAlgorithm.run(ITEMS_LARGE, CAPACITY_LARGE)
 
