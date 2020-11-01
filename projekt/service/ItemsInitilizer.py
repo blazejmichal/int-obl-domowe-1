@@ -1,4 +1,4 @@
-from Item import Item
+from projekt.model.Item import Item
 from random import randrange
 
 

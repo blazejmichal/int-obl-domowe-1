@@ -1,7 +1,7 @@
-from BackpackBruteForce import BackpackBruteForce
-from BackpackGeneticAlgorithm import BackpackGeneticAlgorithm
-from BackpackGreedyAlgorithm import BackpackGreedyAlgorithm
-from ItemsInitilizer import ItemsInitilizer
+from projekt.algorithms.BackpackBruteForce import BackpackBruteForce
+from projekt.algorithms.BackpackGeneticAlgorithm import BackpackGeneticAlgorithm
+from projekt.algorithms.BackpackGreedyAlgorithm import BackpackGreedyAlgorithm
+from projekt.service.ItemsInitilizer import ItemsInitilizer
 from matplotlib import pyplot as plt
 
 
