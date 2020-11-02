@@ -1,3 +1,8 @@
+"""
+Klasa modelowa przedstawiajaca obiekt wkladany do plecaka
+"""
+
+
 class Item(object):
 
     def __init__(self, value=0, weight=0, name=None):

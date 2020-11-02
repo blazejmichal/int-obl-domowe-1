@@ -9,6 +9,10 @@ class BackpackBruteForce:
     startTime = 0
     endTime = 0
 
+    """
+    Glowna metoda uruchamiajaca algorytm
+    """
+
     @classmethod
     def run(cls, ITEMS, CAPACITY):
         cls.setInput(ITEMS, CAPACITY)
@@ -17,10 +21,18 @@ class BackpackBruteForce:
         cls.printInfo(time, bestSet)
         return time
 
+    """
+    Przypisuje do pol wartosci argumentow przekazanych z metody uruchamiajacej projekt
+    """
+
     @classmethod
     def setInput(cls, ITEMS, CAPACITY):
         cls.ITEMS = ITEMS
         cls.CAPACITY = CAPACITY
+
+    """
+    Metoda z zawarta logika algorytmu. Zwraca zestaw przedmiotow o maksymalnej wartosci w danych przypadku plecaka
+    """
 
     @classmethod
     def getBestSet(cls, ITEMS, CAPACITY):
@@ -31,7 +43,7 @@ class BackpackBruteForce:
         matchingSets = []
         for i in range(0, len(ITEMS) + 1):
             for subSet in itertools.combinations(ITEMS, i):
-                subSetValue = cls.getSetValue(subSet)
+                subSetValue = cls.getValueOfSet(subSet)
                 subSetWeights = map(lambda item: item.weight, subSet)
                 subSetWeight = sum(subSetWeights)
                 iteration += 1
@@ -39,10 +51,14 @@ class BackpackBruteForce:
                     xIteration.append(iteration)
                     yValue.append(subSetValue)
                     matchingSets.append(subSet)
-        maxValue = max(matchingSets, key=lambda matchingSet: cls.getSetValue(matchingSet))
+        maxValue = max(matchingSets, key=lambda matchingSet: cls.getValueOfSet(matchingSet))
         cls.endTime = timeit.default_timer()
         cls.plotChart(xIteration, yValue)
         return maxValue
+
+    """
+    Rysuje wykres z proby
+    """
 
     @classmethod
     def plotChart(cls, x, y):
@@ -53,10 +69,18 @@ class BackpackBruteForce:
         plt.legend()
         plt.show()
 
+    """
+    Mapuje kolekcje Itemow na kolekcje ich wartosci. Po czym sumuje by uzyskac laczna wartosc zestawu przedmiotow.
+    """
+
     @classmethod
-    def getSetValue(cls, set):
+    def getValueOfSet(cls, set):
         setValues = map(lambda item: item.value, set)
         return sum(setValues)
+
+    """
+    Wyswietla info z proby w console log'u.
+    """
 
     @classmethod
     def printInfo(cls, time, bestSet):

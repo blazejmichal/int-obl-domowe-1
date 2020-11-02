@@ -8,6 +8,10 @@ class BackpackGreedyAlgorithm:
     startTime = 0
     endTime = 0
 
+    """
+    Glowna metoda uruchamiajaca algorytm
+    """
+
     @classmethod
     def run(cls, ITEMS, CAPACITY):
         cls.setInput(ITEMS, CAPACITY)
@@ -16,10 +20,18 @@ class BackpackGreedyAlgorithm:
         cls.printInfo(time, bestSet)
         return time
 
+    """
+    Przypisuje do pol wartosci argumentow przekazanych z metody uruchamiajacej projekt
+    """
+
     @classmethod
     def setInput(cls, ITEMS, CAPACITY):
         cls.ITEMS = ITEMS
         cls.CAPACITY = CAPACITY
+
+    """
+    Metoda z zawarta logika algorytmu. Zwraca zestaw przedmiotow o maksymalnej wartosci w danych przypadku plecaka
+    """
 
     @classmethod
     def getBestSet(cls, items, capacity):
@@ -50,6 +62,10 @@ class BackpackGreedyAlgorithm:
         cls.plotChart(xIteration, yValue)
         return bestSet
 
+    """
+    Rysuje wykres z proby
+    """
+
     @classmethod
     def plotChart(cls, x, y):
         plt.title("Greedy")
@@ -59,6 +75,10 @@ class BackpackGreedyAlgorithm:
         plt.legend()
         plt.show()
 
+    """
+    Wyswietla info z proby w console log'u.
+    """
+
     @classmethod
     def printInfo(cls, time, bestSet):
         print("\n")
@@ -66,6 +86,12 @@ class BackpackGreedyAlgorithm:
         print("Czas: " + str(time))
         print("Znaleziony zestaw: " + str(bestSet))
         print("\n")
+
+    """
+    Ta metoda takze zawiera logike tego algorytmu. 
+    Jest uruchamiana w celu znalezienia maksymalnej mozliwej wartosci wypelnionego plecaka. 
+    Dzieki temu algorytm genetyczny "wie w ktorej generacji znalazl maksymalna wartosc"
+    """
 
     @classmethod
     def getMaxValue(cls, items, capacity):
